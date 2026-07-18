@@ -17,3 +17,21 @@ public:
 // space Complexity: O(1)
 
 // Optimized Solution 
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int n = nums.size();
+        unordered_map<int,int> mp;
+        vector<int> ans(2,0);
+        for(int i = 0; i < n; i++){
+            if(mp.find(target-nums[i]) != mp.end()){
+                ans[1] = i;
+                ans[0] = mp[target-nums[i]];
+            }
+            mp[nums[i]] = i;
+        }
+        return ans;
+    }
+};
+// Time Complexity: O(n)
+// Space Complexity: O(n) because we are using a map to store the elements of the array.
